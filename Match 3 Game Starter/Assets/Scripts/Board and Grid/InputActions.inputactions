@@ -1,0 +1,84 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "962e88c4-c9ba-4114-9e80-fd72fceb6b1e",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "e274379d-7a95-4b77-a307-b141501b5d6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7e4d59a5-d6b6-44b9-a5a9-afd756831138",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26cd1a92-dfb1-47e6-bb58-26801efe7716",
+                    "path": "<Touchscreen>/touch0/tap",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "b3af7574-16a6-4008-9a7d-3bb9aa4c0926",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "78b28183-958e-4ab9-b986-fd36dd4c476e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "483a0a68-3d4f-4a86-86d1-a6649793892a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39cb8359-2e77-42fa-ab09-99c00c5a5501",
+                    "path": "<Touchscreen>/touch0/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
