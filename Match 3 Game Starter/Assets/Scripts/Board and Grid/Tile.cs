@@ -25,7 +25,7 @@ public class Tile : MonoBehaviour {
 
 	public void OnTouch(InputAction.CallbackContext ctx){
 		if(ctx.started){
-			Debug.Log("I've been touched!");
+			Debug.Log("I've been touched @:" + gameObject.transform.position);
 			/*if(render.sprite == null || BoardManager.instance.IsShifting){
 				return;
 			}
