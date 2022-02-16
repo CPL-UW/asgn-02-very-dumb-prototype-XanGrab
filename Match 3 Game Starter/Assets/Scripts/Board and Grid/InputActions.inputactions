@@ -6,35 +6,44 @@
             "id": "962e88c4-c9ba-4114-9e80-fd72fceb6b1e",
             "actions": [
                 {
-                    "name": "Select",
+                    "name": "SelectInput",
                     "type": "Button",
-                    "id": "e274379d-7a95-4b77-a307-b141501b5d6b",
+                    "id": "dffec44c-d826-442e-b7d2-c39d24f1c21d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PointerPos",
+                    "type": "PassThrough",
+                    "id": "de2249c8-d9c7-4289-967f-da95b6bf7a55",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "7e4d59a5-d6b6-44b9-a5a9-afd756831138",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "Tap",
+                    "id": "045f1e35-3187-40e8-ab13-a5c1a6f1afac",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "SelectInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "26cd1a92-dfb1-47e6-bb58-26801efe7716",
-                    "path": "<Touchscreen>/touch0/tap",
-                    "interactions": "Tap",
+                    "id": "13f245f0-5787-4329-ba9e-f13c23e74adc",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Select",
+                    "action": "PointerPos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
