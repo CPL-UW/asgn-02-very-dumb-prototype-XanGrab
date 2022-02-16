@@ -32,9 +32,17 @@ public class BoardManager : MonoBehaviour {
 			Camera mainCam = Camera.main;
 			Vector2 pointerPos = Mouse.current.position.ReadValue();
 			pointerPos = mainCam.ScreenToWorldPoint(pointerPos);
-			RaycastHit2D hit = Physics2D.Raycast(pointerPos, Vector2.zero);
+			
+			Collider2D[] hits = Physics2D.OverlapPointAll(pointerPos);
+			
 			Debug.Log("Raycast @ " + pointerPos);
-			if (hit.collider != null) {
+			foreach (var hit in hits)
+			{
+				// check if hit is a tile
+				if (hit.gameObject.CompareTag("Tile")){
+					hit.GetComponent<Tile>().Touch();
+					
+				}
 				Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
 				StartCoroutine(ScaleMe(hit.transform));
 			}
@@ -42,7 +50,7 @@ public class BoardManager : MonoBehaviour {
 	}
 	IEnumerator ScaleMe(Transform objTr) {
 		objTr.localScale *= 1.2f;
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.1f);
 		objTr.localScale /= 1.2f;
 	}
 	private void CreateBoard (float xOffset, float yOffset) {
