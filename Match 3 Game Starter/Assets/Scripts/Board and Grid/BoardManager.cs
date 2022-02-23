@@ -83,36 +83,41 @@ public class BoardManager : MonoBehaviour {
 				
 				tiles[x, y] = newTile;
 				newTile.transform.parent = transform;
-				newTile.name = "Tile"+"("+x+","+y+")";
+				newTile.name = "Tile" + (Vector2)newTile.gameObject.transform.position;
 
 				prevLeft[y] = tileColor;
 				prevBelow = tileColor;
 			}
 		}
-		FindObjectOfType<AudioManager>().Play("Tetris");
     }
 	
 	public IEnumerator FindNullTiles() {
 		for (int x = 0; x < xSize; x++) {
+			Debug.Log("Scanning ");
 			for (int y = 0; y < ySize; y++) {
+				Debug.Log("Scanning " + tiles[x,y].name);
 				if (!tiles[x, y].GetComponent<SpriteRenderer>().enabled) {
-					//Debug.Log("Start a shift in col " + x );
+					Debug.Log("Start a shift in col " + x );
 					yield return StartCoroutine(ShiftTilesDown(x, y));
 					break;
 				}
 			}
 		}
 		
+		/*
 		for (int x = 0; x < xSize; x++) {
 			for (int y = 0; y < ySize; y++) {
 				tiles[x, y].GetComponent<Tile>().ClearAllMatches();
 			}
-		}
+		}*/
 	}
 	
 	private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = 0.25f) {
 		IsShifting = true;
 		List<GameObject> shiftTiles = new List<GameObject>();
+		if (shiftTiles.Count != 0) {
+			Debug.LogError("Unexpected");
+		}
 		int nullCount = 0;
 
 		for (int y = yStart; y < ySize; y++) {
@@ -127,45 +132,23 @@ public class BoardManager : MonoBehaviour {
 		for (int i = 0; i < nullCount; i++) {
 			yield return new WaitForSeconds(shiftDelay);
 			if (nullCount == shiftTiles.Count) {
-				Debug.Log("Trigger top row case");
-				for (int k = 0; k < shiftTiles.Count; k++) {
-					GetNewTile(shiftTiles[k], x, ySize - 1);
-				}
 				break;
 			}
-			for (int k = 0; k < shiftTiles.Count - (1 + i); k++) {
+			Debug.Log("NullC " + i);
+			for (int k = 0; k < shiftTiles.Count - 1; k++) {
 				shiftTiles[k].GetComponent<Tile>().SwapTile(shiftTiles[k + 1]);
-				GetNewTile(shiftTiles[k + 1], x, ySize - 1);
+				Debug.Log("Tiles to shift: " + shiftTiles.Count);
+				//shiftTiles[k + 1].GetComponent<SpriteRenderer>().enabled = false;
 				
 				//Debug Actions
 				if(shiftTiles[k].GetComponent<SpriteRenderer>().enabled)
 					StartCoroutine(ScaleMe(shiftTiles[k].transform));
 				if(shiftTiles[k + 1].GetComponent<SpriteRenderer>().enabled)
 					StartCoroutine(ScaleMe(shiftTiles[k + 1].transform));
-				//yield return new WaitForSeconds(shiftDelay);
+				yield return new WaitForSeconds(shiftDelay);
 			}
 		}
 		IsShifting = false;
-		//Debug.Log("Shift ended.");
+		Debug.Log("Shift ended.");
 	}
-	private int GetNewTile(GameObject tile, int x, int y) {
-		List<int> possibleColors = new List<int>(){0, 1, 2, 3, 4, 5};
-
-		if (x > 0) {
-			possibleColors.Remove(tiles[x - 1, y].GetComponent<Tile>().color);
-		}
-		if (x < xSize - 1) {
-			possibleColors.Remove(tiles[x + 1, y].GetComponent<Tile>().color);
-		}
-		if (y > 0) {
-			possibleColors.Remove(tiles[x, y - 1].GetComponent<Tile>().color);
-		}
-
-		tile.GetComponent<Tile>().color = possibleColors[Random.Range(0, possibleColors.Count)];
-		tile.GetComponent<Animator>().SetFloat("Color", tile.GetComponent<Tile>().color);
-		tile.GetComponent<SpriteRenderer>().enabled = true;
-		
-		return possibleColors[Random.Range(0, possibleColors.Count)];
-	}
-
 }

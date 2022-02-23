@@ -8,7 +8,6 @@ using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.UIElements;
 using UnityEngine.UI;
 
 public class Tile : MonoBehaviour {
@@ -99,11 +98,10 @@ public class Tile : MonoBehaviour {
 		}
 		if (matchingTiles.Count >= 2) {
 			for (int i = 0; i < matchingTiles.Count; i++) {
-				matchingTiles[i].GetComponent<Tile>().Pop();
-				//StartCoroutine(matchingTiles[i].GetComponent<Tile>().Pop());
+				//Debug.Log(name+"("+color+") popped.");
+				matchingTiles[i].GetComponent<Animator>().SetBool("Pop", true);
+				matchingTiles[i].GetComponent<SpriteRenderer>().enabled = false;
 			}
-			Pop();
-			//StartCoroutine(Pop());
 			matchFound = true;
 		}
 	}
@@ -115,21 +113,13 @@ public class Tile : MonoBehaviour {
 		ClearMatch(new Vector2[2] { Vector2.left, Vector2.right });
 		ClearMatch(new Vector2[2] { Vector2.up, Vector2.down });
 		if (matchFound) {
-			//StartCoroutine(Pop());
+			render.enabled = false;
+			//Debug.Log(name +"("+color+") popped.");
 			matchFound = false;
 			StopCoroutine(BoardManager.instance.FindNullTiles());
 			StartCoroutine(BoardManager.instance.FindNullTiles());
 			//TODO: add SFX
 		}
-	}
-
-	private void Pop() {
-		Debug.Log("Called Pop!");
-		GetComponent<Animator>().SetBool("Pop", true);
-		FindObjectOfType<AudioManager>().Play("Pop");
-		//yield return new WaitForSeconds(0.2f);
-		GetComponent<SpriteRenderer>().enabled = false;
-		Debug.Log("Pop concluded");
 	}
 	
 	public void SwapTile(GameObject other) { // 1
