@@ -1,0 +1,73 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "962e88c4-c9ba-4114-9e80-fd72fceb6b1e",
+            "actions": [
+                {
+                    "name": "SelectInput",
+                    "type": "Button",
+                    "id": "dffec44c-d826-442e-b7d2-c39d24f1c21d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "045f1e35-3187-40e8-ab13-a5c1a6f1afac",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "b3af7574-16a6-4008-9a7d-3bb9aa4c0926",
+            "actions": [
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "78b28183-958e-4ab9-b986-fd36dd4c476e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "483a0a68-3d4f-4a86-86d1-a6649793892a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39cb8359-2e77-42fa-ab09-99c00c5a5501",
+                    "path": "<Touchscreen>/touch0/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
