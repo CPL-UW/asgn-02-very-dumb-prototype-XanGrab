@@ -343,6 +343,8 @@
 -r:"Library/Bee/artifacts/900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Samples/Input System/1.2.0/Custom Binding Composite/CustomComposite.cs"
 "Assets/Scripts/Board and Grid/BoardManager.cs"
+"Assets/Scripts/Board and Grid/Clock.cs"
+"Assets/Scripts/Board and Grid/HandyBoardManager.cs"
 "Assets/Scripts/Board and Grid/Tile.cs"
 "Assets/Scripts/Effects/GUISizePingPong.cs"
 "Assets/Scripts/Managers/GameManager.cs"
